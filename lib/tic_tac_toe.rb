@@ -31,7 +31,25 @@ class TicTacToe
     def move(index, value)
         @board[index] = value
     end
-
+    
+    def position_taken?(index)
+        @board[index] == " " ? false : true
+end
+    def valid_move?(index)
+        index.between?(0,8) && !position_taken?(index)
+    end
+    def turn_count
+        @board.count{|position| position!= " "}
+    end
+    
+    def current_player
+        if turn_count().even? == true
+            "X"
+        else
+            "O"
+        end
+    
+    end
 end
 game = TicTacToe.new
 binding.pry
